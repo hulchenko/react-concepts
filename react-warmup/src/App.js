@@ -1,18 +1,23 @@
-import React from 'react';
+//import React and state functionality
+import React, { useState } from 'react';
 //Importing components
 import CreateTweet from './components/CreateTweet';
 import TweetList from './components/TweetList';
 
 function App() {
-  //place where you can write regular JS
-  const name = 'Vadym';
-  const date = new Date().toLocaleDateString();
-  const message = 'some tweet text';
+  const [name, setName] = useState('Vadym');
+  //States
+  const [textInput, setTextInput] = useState('');
+  const [tweets, setTweets] = useState([]);
   return (
     <div>
-      <h1>Hello!</h1>
-      <CreateTweet />
-      <TweetList name={name} message={message} date={date} />
+      <CreateTweet
+        textInput={textInput}
+        setTextInput={setTextInput}
+        tweets={tweets}
+        setTweets={setTweets}
+      />
+      <TweetList setName={setName} name={name} tweets={tweets} />
     </div>
   );
 }
