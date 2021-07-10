@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 const CreateTweet = ({ textInput, setTextInput, setTweets, tweets }) => {
   //Functions
@@ -7,7 +8,7 @@ const CreateTweet = ({ textInput, setTextInput, setTweets, tweets }) => {
   };
   const submitTweetHandler = (e) => {
     e.preventDefault();
-    setTweets([...tweets, textInput]); //spread existing array and add new value
+    setTweets([...tweets, { message: textInput, id: uuidv4() }]); //spread existing array and add new value
     setTextInput('');
   };
   return (
